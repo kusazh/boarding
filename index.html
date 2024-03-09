@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boarding Pass</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style type="text/css">
+      @font-face {
+        font-family: MisekiBitmap;
+        src: url("MisekiBitmap.ttf");
+      }
+      body {
+        background-color: #f1f1f1;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      table {
+        background-color: white;
+        border: solid 1px rgba(0, 0, 0, 0.2);
+        border-radius: 2rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        margin: 4rem 0 4rem 0;
+        padding: 1rem;
+        white-space: nowrap;
+      }
+      td {
+        color: grey;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+      }
+      strong,
+      .black,
+      .margin,
+      .poem {
+        color: black;
+      }
+      textarea {
+        font-size: 1rem;
+        margin: 4rem 0 4rem 0;
+        overflow: hidden;
+        resize: none;
+        text-align: center;
+      }
+      .divider {
+        border-right: 1px solid grey;
+      }
+      .margin {
+        margin-left: 1rem;
+      }
+      .poem {
+        font-size: 16px;
+        font-family: "MisekiBitmap";
+        letter-spacing: -2px;
+        line-height: 0.9;
+        padding: 0;
+      }
+      .upper {
+        position: relative;
+        top: -2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table id="pass">
+        <tr>
+          <th contenteditable="true" colspan="6" rowspan="2">
+            Nice Boat Airport
+          </th>
+          <th class="divider" rowspan="6"></th>
+          <th rowspan="6"></th>
+          <th contenteditable="true" colspan="2">Nice Boat Airport</th>
+        </tr>
+        <tr>
+          <td contenteditable="true">
+            <small>Class</small>
+            <br />
+            <strong>A</strong>
+          </td>
+          <td contenteditable="true">
+            <small>Seat</small>
+            <br />
+            <strong>01A</strong>
+          </td>
+        </tr>
+        <tr>
+          <td contenteditable="true" colspan="6">
+            <small>Name</small>
+            <br />
+            <strong>Kusa Zhang</strong>
+          </td>
+          <td contenteditable="true" colspan="2">
+            <strong>Kusa Zhang</strong>
+            <br />
+            <strong>E14514</strong>
+          </td>
+        </tr>
+        <tr>
+          <td contenteditable="true">
+            <small>Flight</small>
+            <br />
+            <strong>E14514</strong>
+          </td>
+          <td contenteditable="true">
+            <small>Name</small>
+            <br />
+            <strong>Kusa Zhang</strong>
+          </td>
+          <td contenteditable="true">
+            <small>Date</small>
+            <br />
+            <strong>9 Mar</strong>
+          </td>
+          <td contenteditable="true">
+            <small>At</small>
+            <br />
+            <strong>13:15</strong>
+          </td>
+          <td contenteditable="true">
+            <small>Class</small>
+            <br />
+            <strong>A</strong>
+          </td>
+          <td contenteditable="true">
+            <small>Seat</small>
+            <br />
+            <strong>01A</strong>
+          </td>
+          <td contenteditable="true">
+            <small>
+              From
+              <br />
+              To
+            </small>
+          </td>
+          <td contenteditable="true">
+            <small class="black">
+              Baidi
+              <br />
+              Jiangling
+            </small>
+          </td>
+        </tr>
+        <tr>
+          <td contenteditable="true" colspan="3">
+            <small>From</small>
+            <br />
+            <strong>Baidi</strong>
+            <br />
+            <small class="margin">BDI</small>
+          </td>
+          <td contenteditable="true" colspan="3">
+            <small>To</small>
+            <br />
+            <strong>Jiangling</strong>
+            <br />
+            <small class="margin">JLN</small>
+          </td>
+          <td contenteditable="true"><strong>9 Mar</strong></td>
+          <td contenteditable="true"><strong>13:15</strong></td>
+        </tr>
+        <tr>
+          <td contenteditable="true">
+            <small>Sequence</small>
+            <br />
+            <strong>0005</strong>
+          </td>
+          <td contenteditable="true" colspan="3">
+            <small>Boarding Time</small>
+            <br />
+            <strong>12:45</strong>
+          </td>
+          <td class="poem" colspan="2">
+            <span id="poem">
+              ■Ⅲ 朝辭白帝彩雲間■|Ⅱ▏
+              <br />
+              ■Ⅲ 千里江陵一日還■|Ⅱ▏
+              <br />
+              ■Ⅲ 兩岸猿聲啼不住■|Ⅱ▏
+              <br />
+              ■Ⅲ 輕舟已過萬重山■|Ⅱ</span
+            ><span class="upper">▏</span>
+          </td>
+          <td contenteditable="true"><small>Sequence</small></td>
+          <td contenteditable="true"><small class="black">0005</small></td>
+        </tr>
+      </table>
+    </div>
+    <textarea id="aera" rows="4">
+朝辭白帝彩雲間
+千里江陵一日還
+兩岸猿聲啼不住
+輕舟已過萬重山</textarea
+    >
+    <button id="save">Save as Image</button>
+    <script>
+      var aera = document.getElementById("aera");
+      var poem = document.getElementById("poem");
+      var save = document.getElementById("save");
+      aera.addEventListener("input", function () {
+        var lines = this.value.split("\n");
+        if (lines.length >= 4) {
+          this.value = lines.slice(0, 4).join("\n");
+        }
+        poem.innerHTML =
+          "■Ⅲ " +
+          this.value.replace(/ /g, "　").split("\n").join("■|Ⅱ▏<br />■Ⅲ ") +
+          "■|Ⅱ";
+      });
+
+      save.addEventListener("click", function () {
+        html2canvas(document.getElementById("pass"), {
+          scale: 3,
+        }).then(function (canvas) {
+          var img = canvas.toDataURL("image/png");
+          var link = document.createElement("a");
+          link.href = img;
+          link.download = "boarding-poem.png";
+          link.click();
+        });
+      });
+    </script>
+  </body>
+</html>
