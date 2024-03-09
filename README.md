@@ -1,3 +1,3 @@
 # Boarding Poem
 
-![boarding-poem](https://github.com/kusazh/boarding/assets/52033954/c5512e77-acde-4597-a686-5c557aeed261)
+![boarding-poem](https://github.com/kusazh/boarding/assets/52033954/d9b5ae8a-aef6-44ac-b390-cb1022a50ffa)
